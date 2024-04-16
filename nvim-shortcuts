@@ -1,0 +1,21 @@
+---------File tree shortcuts ---------------
+file tree - ctrl + n
+create new file - a
+rename new file - r 
+copy file - c 
+paste file - p 
+find files - space + f + f 
+cheatsheet - space + c + h 
+
+--------Window Navigation--------------
+switching file Window -- ctrl + h,j,k,l 
+:vsp -- veritcal split
+:sp -- split
+cycle file tabs -- tab or shift+tab
+close current file tab -- ctrl + x
+go back to the file tree -- ctrl + h
+
+----------Terminal--------------------
+open terminal -- space + h (horizontalj)
+open terminal -- space + v (veritcal) 
+
