@@ -2,6 +2,18 @@
 # Then, you can use RGBA color codes to add transparency to the colors below.
 # For ex: colors = [["#282c34ee", "#282c34dd"], ...
 
+Catppuccin = [
+    ["#51576d", "#51576d"], # bg
+    ["#b5bfe2", "#b5bfe2"], # fg
+    ["#232634", "#232634"], # color01
+    ["#e78284", "#e78284"], # color02
+    ["#a6d189", "#a6d189"], # color03
+    ["#e5c890", "#e5c890"], # color04
+    ["#8caaee", "#8caaee"], # color05
+    ["#f4b8e4", "#f4b8e4"], # color06
+    ["#81c8be", "#81c8be"]  # color15
+    ]
+
 DoomOne = [
     ["#45475a", "#45475a"], # bg
     ["#cdd6f4", "#cdd6f4"], # fg
