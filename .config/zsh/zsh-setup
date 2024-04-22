@@ -1,0 +1,8 @@
+#dependencies
+1. zsh
+2. zap
+
+#Instructions
+1. Install zap from https://www.zapzsh.com/
+2. replace the default ~/.zshrc
+3. copy the zsh folder to ~/.config/zsh
