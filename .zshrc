@@ -15,7 +15,6 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 #plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
-#plug "MAHcodes/distro-prompt"
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
