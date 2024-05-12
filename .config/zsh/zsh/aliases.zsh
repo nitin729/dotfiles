@@ -3,8 +3,11 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
 
+#dev
+alias vs='vscodium'
+
 #list
-alias ls='ls --color=auto alh'
+alias ls='ls -alh --color=auto'
 
 # git
 alias gs="git status"
@@ -15,7 +18,8 @@ alias gp="git pull"
 alias gP="git push"
 
 #custom configs
-alias config="cd ~/.config/"
+alias vim='nvim'
+alias cfg="cd ~/.config/"
 alias qtconfig="nvim ~/.config/qtile/config.py"
 alias qtcolors="nvim ~/.config/qtile/colors.py"
 alias nvconfig="cd ~/.config/nvim; nvim"
@@ -31,7 +35,7 @@ alias sprs='sudo pacman -Rs'
 alias sprdd='sudo pacman -Rdd'
 alias spqo='sudo pacman -Qo'
 alias spsii='sudo pacman -Sii'
-
+alias pacreset='sudo rm /var/lib/pacman/db.lck'
 
 # paru as aur helper - updates everything
 alias upall="paru -Syu"
