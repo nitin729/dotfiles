@@ -1,32 +1,32 @@
-#####################################
-# Qtile Configuration
-# Author: Nitin Jadhav
-# ~/.config/qtile/config.py
-####################################
-
-# Make sure 'qtile-extras' is installed or this config will not work.
-
 import os
 import subprocess
 
+# from qtile_extras.widget import StatusNotifier
 import colors
-from libqtile import bar, extension, hook, layout, qtile
+from libqtile import bar, extension, hook, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.log_utils import logger
 from libqtile.widget.battery import Battery, BatteryState
+
+# Make sure 'qtile-extras' is installed or this config will not work.
 from qtile_extras import widget
-from qtile_extras.widget import decorations
-from qtile_extras.widget.decorations import RectDecoration
+from qtile_extras.widget.decorations import (
+    BorderDecoration,
+    PowerLineDecoration,
+    RectDecoration,
+)
 
-### Default variables
+mod = "mod4"  # Sets mod key to SUPER/WINDOWS
+myTerm = "alacritty"  # default terminal
+myBrowser = "firefox"  # default browser
+# myEmacs = "emacsclient -c -a 'emacs' # The space at the end is IMPORTANT!
 
-mod = "mod4"
-terminal = "alacritty"
-browser = "librewolf"
-filemanager = "pcmanfm"
 
-### Functions required for some keymaps
+# Allows you to input a name when adding treetab section.
+@lazy.layout.function
+def add_treetab_section(layout):
+    prompt = qtile.widgets_map["prompt"]
+    prompt.start_input("Section name: ", layout.cmd_add_section)
 
 
 # A function for hide/show all the windows in a group
@@ -47,33 +47,20 @@ def maximize_by_switching_layout(qtile):
         qtile.current_group.layout = "monadtall"
 
 
-# Allows you to input a name when adding treetab section.
-@lazy.layout.function
-def add_treetab_section(layout):
-    prompt = qtile.widgets_map["prompt"]
-    prompt.start_input("Section name: ", layout.cmd_add_section)
-
-
-### Keymaps
-
 keys = [
     # The essentials
-    Key([mod], "Return", lazy.spawn(terminal), desc="Terminal"),
+    Key([mod], "Return", lazy.spawn(myTerm), desc="Terminal"),
     Key([mod], "p", lazy.spawn("rofi -show drun"), desc="Run Launcher"),
-    Key([mod], "b", lazy.spawn(browser), desc="Default Browser"),
+    Key([mod], "b", lazy.spawn(myBrowser), desc="Default Browser"),
     Key([mod], "g", lazy.spawn("gimp"), desc="Gimp"),
     Key([mod], "v", lazy.spawn("vscodium"), desc="VsCodium"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     # Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod, "shift"], "return", lazy.spawn(filemanager), desc="Pcmanfm"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
-    # volume keys
-    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute")),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # Key([mod, "shift"], "q", lazy.spawn("dm-logout -r"), desc="Logout menu"),
+    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # Switch between windows
     # Some layouts like 'monadtall' only need to use j/k to move
     # through the stack, but other layouts like 'columns' will
@@ -155,8 +142,8 @@ keys = [
     ),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    Key([mod], "m", lazy.layout.maximize(), desc="Toggle between min and max sizes"),
+    #    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    #    Key([mod], "m", lazy.layout.maximize(), desc='Toggle between min and max sizes'),
     Key([mod], "t", lazy.window.toggle_floating(), desc="toggle floating"),
     Key(
         [mod],
@@ -174,6 +161,24 @@ keys = [
     # Switch focus of monitors
     Key([mod], "period", lazy.next_screen(), desc="Move focus to next monitor"),
     Key([mod], "comma", lazy.prev_screen(), desc="Move focus to prev monitor"),
+    # Dmenu/rofi scripts launched using the key chord SUPER+p followed by 'key'
+    # KeyChord([mod], "p", [
+    #     Key([], "h", lazy.spawn("dm-hub -r"), desc='List all dmscripts'),
+    #     Key([], "a", lazy.spawn("dm-sounds -r"), desc='Choose ambient sound'),
+    #     Key([], "b", lazy.spawn("dm-setbg -r"), desc='Set background'),
+    #     Key([], "c", lazy.spawn("dtos-colorscheme -r"), desc='Choose color scheme'),
+    #     Key([], "e", lazy.spawn("dm-confedit -r"), desc='Choose a config file to edit'),
+    #     Key([], "i", lazy.spawn("dm-maim -r"), desc='Take a screenshot'),
+    #     Key([], "k", lazy.spawn("dm-kill -r"), desc='Kill processes '),
+    #     Key([], "m", lazy.spawn("dm-man -r"), desc='View manpages'),
+    #     Key([], "n", lazy.spawn("dm-note -r"), desc='Store and copy notes'),
+    #     Key([], "o", lazy.spawn("dm-bookman -r"), desc='Browser bookmarks'),
+    #     Key([], "p", lazy.spawn("rofi-pass"), desc='Logout menu'),
+    #     Key([], "q", lazy.spawn("dm-logout -r"), desc='Logout menu'),
+    #     Key([], "r", lazy.spawn("dm-radio -r"), desc='Listen to online radio'),
+    #     Key([], "s", lazy.spawn("dm-websearch -r"), desc='Search various engines'),
+    #     Key([], "t", lazy.spawn("dm-translate -r"), desc='Translate text')
+    # ])
 ]
 
 ###Groups
@@ -193,7 +198,134 @@ group_layouts = [
     "monadtall",
     "monadtall",
 ]
+# group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
+# group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX",]
+# group_labels = ["", "", "", "", "", "", "", "", "",]
 
+# group_layouts = ["monadtall", "monadtall", "tile", "tile", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+# groups= [
+#     Group("1",
+#           label="",
+#           ),
+#
+#     Group("2",
+#           label="",
+#           # spawn='vivaldi',
+#           matches=[Match(wm_class=["Vivaldi-stable"]),
+#                    Match(wm_class=["Icecat"]),
+#                    Match(wm_class=["Brave-browser"]),
+#                    Match(wm_class=["firefox"]),
+#                    ],
+#           ),
+#
+#     Group("3",
+#           label="",
+#           matches=[Match(wm_class=["Zathura"]),
+#                    Match(wm_class=["Evince"]),
+#                    ],
+#           ),
+#
+#     Group("4",
+#           label="",
+#           matches=[Match(wm_class=["discord"]),
+#                    Match(wm_class=["Signal Beta"]),
+#                    ],
+#           ),
+#
+#     Group("5",
+#           label="",
+#           layout="max",
+#           matches=[Match(wm_class=["Firefox"]),
+#                    Match(wm_class=["Mplayer"]),
+#                    ],
+#           ),
+#
+#     Group("6",
+#           label="",
+#           matches=[Match(wm_class=["pcmanfm"]),
+#                    Match(wm_class=["Org.gnome.Nautilus"]),
+#                    Match(wm_class=["qBittorrent"]),
+#                    ],
+#           ),
+#
+#     Group("7",
+#           label="",
+#           layout="bsp",
+#           matches=[Match(wm_class=["pavucontrol"]),
+#                    ],
+#           ),
+#
+#     Group("8",
+#           label="",
+#           matches=[Match(wm_class=["emacs"]),
+#                    ],
+#           ),
+#
+#     Group("9",
+#           label="",
+#           layout="max",
+#           matches=[Match(wm_class=["zoom"]),
+#                    Match(wm_class=["Microsoft Teams - Preview"]),
+#                    ],
+#           ),
+#
+#     Group("0",
+#           label=""),
+#           # label=""),
+# ]
+#
+# groups = [
+#         Group("1",label= "-"),
+#         Group("2",label= "="),
+#         Group("3",label= "≡"),
+#         Group("4",label= "△"),
+#         Group("5",label= "□"),
+#         ]
+# group_names = [
+#     "a",
+#     "s",
+#     "f",
+#     "t",
+#     "z",
+#     "u",
+#     "i",
+#     "o",
+#     "p",
+# ]
+# groups = [
+#     Group(
+#         '1',
+#         label=" ",
+#         layout="monadtall",
+#         # spawn="firefox"
+#     ),  Group("2",
+#            label=" ",
+#         layout="monadtall",
+#               # spawn= myBrowser,
+#            # matches=[ Match(wm_class=["Brave-browser"]),
+#            #          Match(wm_class=["firefox"]),
+#            #          ],
+#          ),
+#     Group('3', label=" ", layout="monadtall"),
+#
+#
+#     Group(
+#         '4',
+#         label=" ",
+#         #    spawn="firefox",
+#         layout="monadtall"
+#     ),
+#     Group(
+#         '5',
+#         label=" ",
+#         layout="monadtall"
+#     ),
+#     Group('6', label="󰎇",  layout="monadtall"),
+#     # Group('7', label="七", layout="monadtall"),
+#     # Group('8', label="八", layout="monadtall"),
+#     # Group('9', label="九", layout="monadtall"),
+# ]
+#
 for i in range(len(group_names)):
     groups.append(
         Group(
@@ -223,10 +355,9 @@ for i in groups:
         ]
     )
 
-
 colors = colors.Catppuccin
 
-layout_defaults = {
+layout_theme = {
     "border_width": 2,
     "margin": 8,
     "border_focus": colors[7],
@@ -234,13 +365,13 @@ layout_defaults = {
 }
 
 layouts = [
-    layout.Bsp(**layout_defaults),
-    layout.Floating(**layout_defaults),
-    # layout.RatioTile(**layout_defaults),
-    layout.VerticalTile(**layout_defaults),
-    # layout.Matrix(**layout_defaults),
-    layout.MonadTall(**layout_defaults),
-    layout.MonadWide(**layout_defaults),
+    # layout.Bsp(**layout_theme),
+    # layout.Floating(**layout_theme)
+    # layout.RatioTile(**layout_theme),
+    # layout.VerticalTile(**layout_theme),
+    # layout.Matrix(**layout_theme),
+    layout.MonadTall(**layout_theme),
+    # layout.MonadWide(**layout_theme),
     layout.Tile(
         shift_windows=True,
         border_width=0,
@@ -251,24 +382,107 @@ layouts = [
         border_width=0,
         margin=0,
     ),
-    layout.Stack(**layout_defaults, num_stacks=2),
-    layout.Columns(**layout_defaults),
+    # layout.Stack(**layout_theme, num_stacks=2),
+    # layout.Columns(**layout_theme),
+    # layout.TreeTab(
+    #     font = "Ubuntu Bold",
+    #     fontsize = 11,
+    #     border_width = 0,
+    #     bg_color = colors[0],
+    #     active_bg = colors[8],
+    #     active_fg = colors[2],
+    #     inactive_bg = colors[1],
+    #     inactive_fg = colors[0],
+    #     padding_left = 8,
+    #     padding_x = 8,
+    #     padding_y = 6,
+    #     sections = ["ONE", "TWO", "THREE"],
+    #     section_fontsize = 10,
+    #     section_fg = colors[7],
+    #     section_top = 15,
+    #     section_bottom = 15,
+    #     level_shift = 8,
+    #     vspace = 3,
+    #     panel_width = 240
+    #     ),
+    # layout.Zoomy(**layout_theme),
 ]
 
 widget_defaults = dict(
-    font="CaskaydiaCove Nerd Font Bold",
+    font="JetBrainsMono Nerd Font Bold",
     fontsize=15,
     padding=5,
     margin=5,
-    foreground=colors[2],
     background="#00000000",
 )
-
+icon_font_size = 5
 extension_defaults = widget_defaults.copy()
+
+
+## BATTERY CONFIG
+
+# class MyBattery(Battery):
+#     """
+#     This is basically the Battery widget except it uses some icons, and if you click it
+#     it will show the percentage numerically for 1 second.
+#     """
+#
+#     def build_string(self, status):
+#         if self.layout is not None:
+#             self.layout.colour = self.foreground
+#             if (
+#                 status.state == BatteryState.DISCHARGING
+#                 and status.percent < self.low_percentage
+#             ):
+#                 self.background = self.low_background
+#             else:
+#                 self.background = self.normal_background
+#         if status.state == BatteryState.DISCHARGING:
+#             if status.percent > 0.75:
+#                 char = ""
+#             elif status.percent > 0.45:
+#                 char = ""
+#             elif status.percent > 0.25:
+#                 char = ""
+#             else:
+#                 char = ""
+#         elif status.percent >= 1 or status.state == BatteryState.FULL:
+#             char = ""
+#         elif status.state == BatteryState.EMPTY or (
+#             status.state == BatteryState.UNKNOWN and status.percent == 0
+#         ):
+#             char = ""
+#         else:
+#             char = ""
+#         return self.format.format(char=char, percent=status.percent)
+#
+#     def restore(self):
+#         self.format = "{char}"
+#         self.font = "Font Awesome 5 Free"
+#         self.timer_setup()
+#
+#     def button_press(self, x, y, button):
+#         self.format = "{percent:2.0%}"
+#         self.font = "TamzenForPowerline Bold"
+#         self.timer_setup()
+#         self.timeout_add(1, self.restore)
+#
+#
+# battery = MyBattery(
+#     format="{char}  {percent:2.0%}",
+#     low_background=colors[1],
+#     show_short_text=True,
+#     low_percentage=0.12,
+#     notify_below=12,
+#     foreground=colors[1],
+#     fontsize=icon_font_size + 10,
+# )
+#
 
 
 def init_widgets_list():
     widgets_list = [
+        #  widget.Spacer(length = 8),
         # widget.TextBox(
         #             text= "",
         #             padding=5,
@@ -277,13 +491,17 @@ def init_widgets_list():
         #         ),
         widget.Image(
             filename="~/.config/qtile/arch.svg",
-            mask=False,
+            mask=True,
             margin=1,
             scale=True,
-            background=colors[6],
             #   adjust_x=4,
+            colour=colors[6],
         ),
-        widget.Spacer(length=5),
+        widget.Spacer(length=10),
+        widget.Clock(
+            padding=0, fontsize=15, foreground=colors[1], format="%d-%m %a %I:%M:%S %p"
+        ),
+        widget.Spacer(),
         widget.GroupBox(
             fontsize=20,
             margin_y=5,
@@ -294,84 +512,49 @@ def init_widgets_list():
             active=colors[7],
             inactive=colors[1],
             rounded=False,
-            highlight_color=colors[6],
+            highlight_color=colors[0],
             highlight_method="line",
             this_current_screen_border=colors[1],
             this_screen_border=colors[7],
             other_current_screen_border=colors[7],
             other_screen_border=colors[4],
         ),
-        widget.Spacer(length=5),
-        widget.WindowName(padding=10, background=colors[6], foreground=colors[2]),
-        widget.Spacer(length=5),
-        # widget.Spacer(background=colors[6]),
-        widget.TextBox(
-            text="󰘚",
-            fontsize=17,
-            background=colors[6],
-        ),
-        widget.Memory(
-            background=colors[6],
-            format="{MemUsed:.0f}MB ",
-        ),
-        widget.Spacer(length=5),
+        widget.Spacer(),
         widget.ThermalSensor(
             format=" {temp:.1f}{unit}",
             fontsize=15,
-            background=colors[6],
-            foreground_alert=colors[9],
+            foreground=colors[1],
+            foreground_alert=colors[3],
             metric=True,
             tag_sensor="Tctl",
             threshold=80,
         ),
-        widget.Spacer(length=5),
-        widget.TextBox(
-            text="󰕾",
-            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("pavucontrol")},
-            fontsize=20,
-            background=colors[6],
-        ),
-        widget.Volume(fontsize=15, background=colors[6]),
-        widget.Spacer(length=5),
-        # widget.Spacer(length=5),
+        widget.Spacer(length=10),
         # battery,
+        widget.BatteryIcon(
+            theme_path="~/.config/qtile/images", scale=1.4, colour=colors[1]
+        ),
         widget.Battery(
-            format="{percent:2.0%} {char}",
+            format="{percent:2.0%}",
             fontsize=15,
-            background=colors[6],
-            full_char="charged",
-            charge_char="ﮣ",
-            discharge_char="discharging",
-            empty_char="󰂃",
-            not_charging_char="charging paused",
-            low_foreground=colors[9],
+            foreground=colors[1],
+            # full_char='󰁹',
+            # charge_char='󰂄',
+            # discharge_char='󱟞',
+            # empty_char='󰂃',
+            # # not_charging_char='󰚥',
+            low_foreground=colors[3],
             show_short_text=True,
             low_percentage=0.12,
             notify_below=12,
         ),
-        widget.Spacer(length=5),
-        widget.TextBox(text=" ", fontsize=17, background=colors[6]),
-        widget.Clock(
-            padding=0,
-            fontsize=15,
-            background=colors[6],
-            format="%d %a %I:%M %p ",
-        ),
-        widget.Spacer(length=5),
         widget.Systray(
-            icon_size=15,
-            # background=colors[6],
             padding=10,
-            theme_path="rose-pine-gtk",
-            decorations=[RectDecoration(radius=0, extrawidth=5)],
+            icon_size=15,
+            foreground=colors[1],
         ),
-        widget.Spacer(length=5),
-        #     widget.Spacer(),
-        widget.CurrentLayoutIcon(
-            scale=0.8,
-            background=colors[6],
-            use_mask=True,
-        ),
+        widget.Spacer(length=8),
+        #
     ]
     return widgets_list
 
@@ -401,9 +584,7 @@ def init_screens():
                 opacity=1,
                 background="#00000000",
                 margin=[4, 8, 0, 8],
-            ),
-            wallpaper="~/0063.jpg",
-            wallpaper_mode="fill",
+            )
         ),
         Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26)),
         Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=26)),
@@ -464,6 +645,7 @@ mouse = [
 
 
 # ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
+# ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
 @hook.subscribe.client_new
 def assign_app_group(client):
 
@@ -487,7 +669,6 @@ def assign_app_group(client):
         "brave",
         "brave-browser",
         "librewolf",
-        "LibreWolf",
         "librewolf-bin",
         "bitwarden",
         "Bitwarden",
@@ -561,8 +742,6 @@ def assign_app_group(client):
         "Ristretto",
         "Nitrogen",
         "Feh",
-        "nsxiv",
-        "Nsxiv",
         "inkscape",
         "nomacs",
         "ristretto",
@@ -570,30 +749,31 @@ def assign_app_group(client):
         "feh",
         "telegram-desktop",
         "TelegramDesktop",
+        "Zoom",
+        "zoom",
+        "zoom ",
         "discord",
         "Discord",
     ]
-    d[group_names[7]] = [
-        "youtube music",
-        "YouTube Music",
-    ]
-
+    d[group_names[7]] = []
     d[group_names[8]] = []
 
     allowToBeInGroup = [
         # "Alacritty",
+        "xfce4-terminal",
+        "Xfce4-terminal",
+        "gnome-calculator",
+        "xfce4-notifyd",
+        "Xfce4-notifyd",
+        "gsimplecal",
+        "spectacle",
         "polkit-gnome-authentication-agent-1",
         "Toolkit",
         "notification",
         "toolbar",
+        "splash",
         "dialog",
-        "pavucontrol",
-        "blueman-manager",
-        "blueman-applet",
-        "Blueman-applet",
-        "Blueman-manager",
-        "nm-applet",
-        "Nm-applet",
+        "speedcrunch",
     ]
 
     wm_class = client.window.get_wm_class()
@@ -604,11 +784,11 @@ def assign_app_group(client):
                 if wm_class in list(d.values())[i]:
                     group = list(d.keys())[i]
                     client.togroup(group)
-                    client.group.toscreen(toggle=False)
+                    client.group.cmd_toscreen(toggle=False)
                     break
                 else:
                     client.togroup("9")
-                    client.group.toscreen(toggle=False)
+                    client.group.cmd_toscreen(toggle=False)
 
 
 dgroups_key_binder = None
@@ -626,13 +806,6 @@ floating_layout = layout.Floating(
         Match(wm_class="dialog"),  # dialog boxes
         Match(wm_class="download"),  # downloads
         Match(wm_class="error"),  # error msgs
-        Match(wm_class="pavucontrol"),
-        Match(wm_class="blueman-manager"),
-        Match(wm_class="Blueman-manager"),
-        Match(wm_class="nm-applet"),
-        Match(wm_class="Nm-applet"),
-        Match(wm_class="blueman-applet"),
-        Match(wm_class="Blueman-applet"),
         Match(wm_class="file_progress"),  # file progress boxes
         Match(wm_class="kdenlive"),  # kdenlive
         Match(wm_class="makebranch"),  # gitk
@@ -664,13 +837,18 @@ auto_minimize = True
 wl_input_rules = None
 
 
-#
 @hook.subscribe.startup_once
-def autostart():
-    home = os.path.expanduser("~/.config/qtile/autostart.sh")
-    subprocess.call([home])
+def start_once():
+    home = os.path.expanduser("~")
+    subprocess.call([home + "/.config/qtile/scripts/autostart.sh"])
 
 
+# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
+# string besides java UI toolkits; you can see several discussions on the
+# mailing lists, GitHub issues, and other WM documentation that suggest setting
+# this string if your java app doesn't work correctly. We may as well just lie
+# and say that we're a working one by default.
 #
-#
+# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
+# java that happens to be on java's whitelist.
 wmname = "LG3D"

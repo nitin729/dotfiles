@@ -7,7 +7,7 @@ alias rm='rm -iv'
 alias vs='vscodium'
 
 #list
-alias ls='ls -alh --color=auto'
+alias ls='ls -lah --color=auto'
 
 # git
 alias gs="git status"
