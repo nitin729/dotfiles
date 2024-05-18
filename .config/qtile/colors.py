@@ -115,7 +115,7 @@ Catppuccin = [
     ["#a6d189", "#a6d189"],  # color03
     ["#e5c890", "#e5c890"],  # color04
     ["#8caaee", "#8caaee"],  # color05
-    ["#f4b8e4", "#f4b8e4"],  # color06
+    ["#f4b8e4", "#f4b8e4"],  # color06 Flamingo
     ["#81c8be", "#81c8be"],  # color15
     ["#d20f39", "#d20f39"],  # red
 ]
