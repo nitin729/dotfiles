@@ -30,7 +30,6 @@ echo "Installation of bluetooth software"
 ###############################################################################
 
 list=(
-pulseaudio-bluetooth
 bluez
 bluez-libs
 bluez-utils

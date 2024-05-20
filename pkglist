@@ -10,3 +10,7 @@ alacritty amd-ucode catppuccin-gtk-theme-mocha catppuccin-cursors-mocha dunst fi
 
 
 # notification-daemon
+#
+# 
+
+paru -S hyprland hyprpaper kitty gtk3 gtk4 firefox librewolf fzf git gvfs lf man-db network-manager-applet nodejs npm ttf-jetbrains-mono-nerd unzip ufw

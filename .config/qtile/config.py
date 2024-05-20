@@ -9,7 +9,6 @@
 import os
 import subprocess
 
-import colors
 from libqtile import bar, extension, hook, layout, qtile
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
@@ -18,6 +17,8 @@ from libqtile.widget.battery import Battery, BatteryState
 from qtile_extras import widget
 from qtile_extras.widget import decorations
 from qtile_extras.widget.decorations import RectDecoration
+
+import colors
 
 ### Default variables
 
