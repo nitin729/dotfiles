@@ -20,9 +20,13 @@ alias gP="git push"
 #custom configs
 alias vim='nvim'
 alias cfg="cd ~/.config/"
-alias qtconfig="nvim ~/.config/qtile/config.py"
+alias qtconfig="nvim ~/.config/qtile/config.py || nvim ~/dotfiles/qtile/config.py"
 alias qtcolors="nvim ~/.config/qtile/colors.py"
 alias nvconfig="cd ~/.config/nvim; nvim"
+alias hc="nvim ~/.config/hypr/hyprland.conf"
+alias wbc="nvim ~/.config/waybar/config.jsonc"
+alias wbs="nvim ~/.config/waybar/style.css"
+
 
 #arch specific
 ########################################################

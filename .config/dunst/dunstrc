@@ -176,7 +176,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%a</b>: %s\n%b"
+    format = "%i <b>%s</b>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -214,7 +214,8 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = oomox-rose-pine
+    icon_theme = rose-pine-icons
+    enable_recursive_icon_lookup = true
     # You can also set multiple icon themes, with the leftmost one being used first.
     # icon_theme = "Adwaita, breeze"
 
@@ -230,7 +231,7 @@
     max_icon_size = 32
 
     # Paths to default icons (only necessary when not using recursive icon lookup)
-    icon_path = /usr/share/icons/rose-pine-icons
+     icon_path = /usr/share/icons/rose-pine-icons/16x16/status/:/usr/share/icons/rose-pine-icons/16x16/devices/:/usr/share/icons/rose-pine-icons/16x16/panel/
 
     ### History ###
 
@@ -333,23 +334,23 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#888888"
+    background = "#1e1e2e"
+    foreground = "#cdd6f4"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
+    background = "#1e1e2e"
+    foreground = "#cdd6f4"
     timeout = 10
     override_pause_level = 30
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
+    background = "#f38ba8"
+    foreground = "#cdd6f4"
     frame_color = "#f4b8e4"
     timeout = 0
     override_pause_level = 60

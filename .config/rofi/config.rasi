@@ -13,4 +13,4 @@ font: "JetBrainsMono Nerd Font Mono 10";
 
 /* Copy the theme file in /usr/share/rofi/themes directory */
 
-@theme "/usr/share/rofi/themes/catppuccin.rasi"
+@theme "~/.config/rofi/catppuccin.rasi"

@@ -1,89 +1,63 @@
+// ~/.config/fastfetch/config.jsonc
+// See https://github.com/fastfetch-cli/fastfetch/wiki/Configuration for more details
+// See *.jsonc in https://github.com/fastfetch-cli/fastfetch/tree/dev/presets/examples for more examples
 {
-    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-     "logo": {
-         "type": "auto",
-        "source": "./ascii.txt",
-         "width": 32,
-         "height": 15
-     },
-    "display": {
-        "separator": " "
+  // "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "~/.config/fastfetch/arch",
+    "color": {
+      "1": "blue"
     },
-    "modules": [
-        "break",
-        {
-            "type": "host",
-            "key": "╭─󰇅 ",
-            "keyColor": "green"
-        },
-        {
-            "type": "cpu",
-            "key": "├─ ",
-            "format": "{1}",
-            "keyColor": "green"
-        },
-        {
-            "type": "gpu",
-            "key": "├─ ",
-            "format": "{2}",
-            "keyColor": "green"
-        },
-        {
-            "type": "memory",
-            "key": "├─ ",
-            "keyColor": "green"
-        },
-        {
-            "type": "swap",
-            "key": "├─󰯍 ",
-            "keyColor": "green"
-        },
-        {
-            "type": "display",
-            "key": "╰─󰍹 ",
-            "keyColor": "green",
-            "compactType": "original"
-        },
-        "break",
-
-        {
-            "type": "shell",
-            "key": "╭─ ",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "terminal",
-            "key": "├─ ",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "de",
-            "key": "├─ ",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "wm",
-            "key": "╰─ ",
-            "keyColor": "yellow"
-        },
-
-        "break",
-        {
-            "type": "title",
-            "key": "╭─ ",
-            "format": "{1}@{2}",
-            "keyColor": "blue"
-        },
-        {
-            "type": "os",
-            "key": "├─ ", // Just get your distro's logo off nerdfonts.com
-            "keyColor": "blue"
-        },
-        {
-            "type": "kernel",
-            "key": "╰─ ",
-            "format": "{1} {2}",
-            "keyColor": "blue"
-        }
-    ]
+    "type": "file",
+  },
+  "display": {
+    "separator": "    "
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "        rude@legion5              "
+    },
+    {
+      "type": "custom",
+      "format": "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+    },
+    "break",
+   
+    {
+      "type": "os",
+      "key": "  ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "kernel",
+      "key": "  ",
+      "keyColor": "white"
+    },
+    {
+      "type": "packages",
+      "key": "  󰮯",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "wm",
+      "key": "  󰨇",
+      "keyColor": "blue"
+    },
+    {
+      "type": "terminal",
+      "key": "  ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "shell",
+      "key": "  ",
+      "keyColor": "yellow"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+    }
+  ]
 }

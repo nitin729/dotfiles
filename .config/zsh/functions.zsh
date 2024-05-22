@@ -26,5 +26,5 @@ ex ()
   fi
 }
 
-#neofetch
-neofetch
+#fastfetch
+fastfetch

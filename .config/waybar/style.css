@@ -3,7 +3,7 @@
   border: none;
   font-family: "CaskaydiaCove Nerd Font";
   font-weight: normal;
-  font-size: 13px;
+  font-size: 17px;
   min-height: 0;
 }
 
@@ -67,8 +67,8 @@ tooltip {
 #backlight,
 #backlight {
   opacity: 1;
-  margin-right: 5px;
-  margin-left: 5px;
+  margin-right: 8px;
+  margin-left: 8px;
   color: @text;
 }
 
