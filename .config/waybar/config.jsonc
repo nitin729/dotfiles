@@ -44,18 +44,23 @@
   },
   "hyprland/workspaces": {
     "sort-by-name": true,
-    "format": "{id}",
+    "format": "{icon}",
     "show-special": true,
 		"on-click": "activate",
+    "icon":[" ", " ", " ", " ", " ", "󰻧 ", " ", "󰎇", " "],
     "persistent-workspaces": {
-      "*": 9,
+      "*":  9,
     }
   },
   "tray": {
     "icon-size": 15,
     "spacing": 2
-  }, "temperature": {
-		"critical-threshold": 90,
+  },
+
+  "temperature": {
+		"critical-threshold": 80,
+    "thermal-zone": 1,
+    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
 		"interval": 5,
 		"format": "{icon} {temperatureC}°",
 		"format-icons": [
@@ -122,7 +127,7 @@
     "format-muted": " Muted",
     "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
     "on-right-click": "pavucontrol",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 10%+",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 10%+ -l 1.0",
     "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 10%-",
     "format-icons": {
       "headphone": "",
@@ -143,7 +148,7 @@
     "format-source": " {volume}%",
     "format-source-muted": " Muted",
     "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 5%+",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 5%+ -l 1.0",
     "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-",
   },
   "network": {

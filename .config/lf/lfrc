@@ -21,7 +21,7 @@ cmd mkfile ${{
 }}
 
 cmd setwallpaper ${{
-    setwallpaper "$f"
+    setwallpaper.sh "$f"
 }}
 
 # Archive bindings
