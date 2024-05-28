@@ -3,6 +3,7 @@
 set hidden true
 set ignorecase true
 set icons true
+set drawbox
 set rulerfmt "%d  |%a  |%p  |\033[7;31m %m \033[0m  |\033[7;33m %c \033[0m  |\033[7;35m %s \033[0m  |\033[7;34m %f \033[0m  |%i/%t"
 set previewer ~/.config/lf/lf_kitty_preview
 set cleaner ~/.config/lf/lf_kitty_clean
@@ -25,31 +26,61 @@ cmd setwallpaper ${{
 }}
 
 # Archive bindings
-cmd unarchive ${{
-  case "$f" in
-      *.zip) unzip "$f" ;;
-      *.rar) unrar x "$f" ;;
-      *.tar.gz) tar -xzvf "$f" ;;
-      *.tar.bz2) tar -xjvf "$f" ;;
-      *.tar) tar -xvf "$f" ;;
-      *.7z) 7z e "$f" ;;
-      *) echo "Unsupported format" ;;
-  esac
+cmd extract ${{
+	clear; tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "extract?[y/N]"
+	read ans
+	[ $ans = "y" ] && {
+		case $fx in
+			*.tar.bz2)   tar xjf $fx     ;;
+			*.tar.gz)    tar xzf $fx     ;;
+			*.bz2)       bunzip2 $fx     ;;
+			*.rar)       unrar e $fx     ;;
+			*.gz)        gunzip $fx      ;;
+			*.tar)       tar xf $fx      ;;
+			*.tbz2)      tar xjf $fx     ;;
+			*.tgz)       tar xzf $fx     ;;
+			*.zip)       unzip $fx       ;;
+			*.Z)         uncompress $fx  ;;
+			*.7z)        7z x $fx        ;;
+			*.tar.xz)    tar xf $fx      ;;
+		esac
+	}
 }}
 
-# Trash bindings
-cmd trash ${{
-  files=$(printf "$fx" | tr '\n' ';')
-  while [ "$files" ]; do
-    file=${files%%;*}
+# Delete bindings
+cmd delete ${{
+	clear;tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "delete? [y/N] : "
+	read ans
+	[ $ans = "y" ] && rm -rf -- $fx;notify-send " $fx Deleted."
+}}
 
-    trashy put "$(basename "$file")"
-    if [ "$files" = "$file" ]; then
-      files=''
-    else
-      files="${files#*;}"
-    fi
-  done
+
+cmd moveto ${{
+	clear;tput bold
+	set -f
+	clear; echo "Move to where?"
+	dest="$(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf | sed 's|~|$HOME|')" &&
+	for x in $fx; do
+		eval mv -iv \"$x\" \"$dest\"
+	done &&
+	notify-send "   File(s) moved." "File(s) moved to $dest."
+}}
+
+cmd copyto ${{
+	clear;tput bold
+	set -f
+	clear; echo "Copy to where?"
+	dest="$(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf | sed 's|~|$HOME|')" &&
+	for x in $fx; do
+		eval cp -ivr \"$x\" \"$dest\"
+	done &&
+	notify-send "󱉥  File(s) copied." "File(s) copies to $dest."
 }}
 
 cmd open &{{
@@ -62,6 +93,9 @@ cmd open &{{
 cmd on-select &{{
     lf -remote "send $id set statfmt \"$(exa -ld --color=always "$f")\""
 }}
+
+
+#fzf bindings
 
 cmd fzf_jump ${{
     res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location')"
@@ -97,6 +131,11 @@ map <c-f> :fzf_search
 #map zb push :z-jump<space>-b<space>
 #map zz push :z-jump<space>
 
+cmd edit-config ${{
+    $EDITOR ~/.config/lf/lfrc
+    lf -remote "send $id source ~/.config/lf/lfrc"
+}}
+
 # Bindings
 #map c
 map d
@@ -106,18 +145,20 @@ map e
 map nv $nvim "$f"
 map cf $dotbare fadd -f
 
-map ex unarchive
+map ex extract
 #map ae $wine "$f"
+map R edit-config
+
 
 # Basic Functions
 map . set hidden!
-map dd trash
+map D delete
 map u $trashy restore -r 0
-map dr $trashy restore
-map de $trashy empty --all
 map p paste
 map x cut
 map y copy
+map Y copyto
+map M moveto
 map <enter> open
 map R reload
 map a mkfile

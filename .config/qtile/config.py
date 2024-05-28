@@ -1,6 +1,6 @@
 #####################################
 # Qtile Configuration
-# Author: Nitin Jadhav
+# Author: rude
 # ~/.config/qtile/config.py
 ####################################
 

@@ -2,7 +2,8 @@
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
-
+alias cat='bat --theme=ansi --style='numbers,changes,grid,auto,header,header-filename,header-filesize,rule,snip''
+alias bat='bat --theme=ansi --style='numbers,changes,grid,auto,header,header-filename,header-filesize,rule,snip''
 #dev
 alias vs='vscodium'
 
