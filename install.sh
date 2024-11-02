@@ -45,6 +45,7 @@ grub
 gtk3
 gtk4
 gvfs
+gvfs-mtp
 hypridle
 hyprland
 hyprlock
@@ -79,6 +80,8 @@ ttf-nerd-fonts-symbols
 ufw
 unzip
 waybar
+zathura
+zathura-pdf-poppler
 zsh
 )
 

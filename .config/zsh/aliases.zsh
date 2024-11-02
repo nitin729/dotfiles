@@ -2,13 +2,15 @@
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
-alias cat='bat --theme=ansi --style='numbers,changes,grid,auto,header,header-filename,header-filesize,rule,snip''
-alias bat='bat --theme=ansi --style='numbers,changes,grid,auto,header,header-filename,header-filesize,rule,snip''
+alias cat='bat --theme=ansi --style='numbers,changes,grid,auto,header,header-filename,header-filesize,snip''
+alias bat='bat --theme=ansi --style='numbers,changes,grid,auto,header,header-filename,header-filesize,snip''
 #dev
 alias vs='vscodium'
 
 #list
 alias ls='ls -lah --color=auto'
+
+#ssh
 
 # git
 alias gs="git status"

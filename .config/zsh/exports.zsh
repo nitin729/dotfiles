@@ -2,12 +2,19 @@
 export EDITOR="nvim"
 export VISUAL="nvim"
 export READER="zathura"
+export VIDEO="mpv"
 
 
 #export nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completionhyfetch
+
+
+#Export BAT
+export BAT_CONFIG_PATH="$HOME/.config/bat"
+export BAT_THEME="$HOME/.config/bat/themes/Catppuccin-mocha.tmTheme"
+
 
 # lf icons
 export LF_ICONS="\

@@ -83,12 +83,14 @@ cmd copyto ${{
 	notify-send "󱉥  File(s) copied." "File(s) copies to $dest."
 }}
 
-cmd open &{{
+ cmd open &{{
 	case $(file --mime-type -Lb $f) in
-		text/*) lf -remote "send $id \$nvim \$fx";;
-		*) xdg-open "$f"
-	esac
-}}
+ 		text/*) lf -remote "send $id \$nvim \$fx";;
+    application/pdf|application/vnd.djvu|application/epub*) lf -remote "send $id \$zathura \$fx" ;;
+ 		*) xdg-open "$f"
+ 	esac
+ }}
+
 
 cmd on-select &{{
     lf -remote "send $id set statfmt \"$(exa -ld --color=always "$f")\""
@@ -173,5 +175,5 @@ map gd cd ~/Downloads
 #map gp cd ~/pictures
 #map gr cd ~/repos
 #map gv cd ~/videos
-#map gs cd ~/.local/bin
+map gl cd ~/.local/bin
 #map gt cd ~/.local/share/Trash/files
