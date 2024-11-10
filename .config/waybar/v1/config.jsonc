@@ -22,15 +22,15 @@
   "modules-center": [
   ],
   "modules-right": [
-    "tray",
+    // "custom/updates",
+    // "custom/notifications",
     "temperature",
 //    "memory",
     "pulseaudio",
     "pulseaudio#microphone",
     "battery",
     "clock",
-//   "custom/updates",
-    "custom/swaync",
+    "tray",
   ],
   "hyprland/window": {
     "format": "{}",
@@ -60,7 +60,7 @@
   "temperature": {
 		"critical-threshold": 80,
     "thermal-zone": 1,
-    "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
 		"interval": 5,
 		"format": "{icon} {temperatureC}°",
 		"format-icons": [
@@ -179,7 +179,7 @@
   "custom/updates": {
     "format": "{}",
     "interval": 150,
-    "exec": "$HOME/.local/bin/updatecheck",
+    "exec": "$HOME/.config/waybar/bin/updatecheck",
     "return-type": "json",
     "exec-if": "exit 0",
     "signal": 8
@@ -198,25 +198,5 @@
     "exec": "$HOME/.config/waybar/bin/playerinfo",
     "max-length": 40,
     "tooltip": true,
-  },
-  "custom/swaync": {
-    "tooltip": false,
-    "format": "{icon}",
-   "format-icons": {
-      "notification": "🔔<span foreground='red'><sup></sup></span>",
-      "none": "🔔",
-      "dnd-notification": "🔕<span foreground='red'><sup></sup></span>",
-      "dnd-none": "🔕",
-      "inhibited-notification": "🔔<span foreground='red'><sup></sup></span>",
-      "inhibited-none": "🔔",
-      "dnd-inhibited-notification": "🔕<span foreground='red'><sup></sup></span>",
-      "dnd-inhibited-none": "🔕"
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "~/.config/swaync/scripts/open-tray.sh",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
   },
 }

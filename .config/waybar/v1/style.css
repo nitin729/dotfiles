@@ -1,4 +1,4 @@
-@import "./colorschemes/everforest.css";
+@import "./mocha.css";
 * {
   border: none;
   font-family: "CaskaydiaCove Nerd Font";
@@ -9,15 +9,15 @@
 
 window#waybar {
   background: @base;
-  border: 2px solid @color5;
+  border: 2px solid #f4b8e4;
 }
 
 tooltip {
-  background: @base;
+  background: #000000;
   border-radius: 7px;
   border-width: 2.5px;
   border-style: solid;
-  border-color: @color5;
+  border-color: #8aadf4;
   padding-right: 5px;
   padding-left: 5px;
   padding-top: 5px;
@@ -25,18 +25,16 @@ tooltip {
 }
 
 #workspaces button {
-  color: @color3;
+  color: @blue;
 }
 
 #workspaces button.empty {
-  color: @color2;
+  color: @text;
 }
 
 #workspaces button.active {
-  color: @base;
-  background-color: @color5;
-  font-weight: 900;
-  border-radius: 0;
+  color: #f4b8e4;
+  background-color: rgba(180, 190, 254, 0.7);
 }
 
 #workspaces button.focused {
@@ -49,8 +47,7 @@ tooltip {
 }
 
 #workspaces button:hover {
-  color: @base;
-  border-radius: 0;
+  color: @text;
 }
 
 #window,
@@ -61,7 +58,6 @@ tooltip {
 #network,
 #bluetooth,
 #custom-notifications,
-#custom-swaync,
 #custom-updates,
 #custom-player,
 #temperature,
@@ -74,11 +70,7 @@ tooltip {
   opacity: 1;
   margin-right: 8px;
   margin-left: 8px;
-  color: #ebdbb2;
-}
-
-#custom-swaync{
-  margin-right: 20px;
+  color: @text;
 }
 
 #tray {
@@ -113,8 +105,8 @@ tooltip {
   border-radius: 7px 7px 7px 7px;
   border-left: 0px;
   border-right: 0px;
-  margin-left: 7px;
-  margin-right: 7px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 #custom-player {

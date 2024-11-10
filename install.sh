@@ -18,11 +18,11 @@ fi
 ### Installing packages
 
 func_install() {
-	if pacman -Qi $1 &> /dev/null; then
+	if paru -Qi $1 &> /dev/null; then
   		tput setaf 1;echo "################## The package "$1" is already installed"
 	else
     	tput setaf 2;echo "##################  Installing package "  $1
-    	sudo pacman -S --noconfirm --needed $1 
+	 paru -S --noconfirm --needed $1 
     fi
 }
 
@@ -30,18 +30,24 @@ func_install() {
 list=(
 amd-ucode
 bat
-blueman
-bluez
-bluez-utils
+#blueman
+#bluez
+#bluez-utils
+brightnessctl
 btop
-catppuccin-cursors-mocha
+#catppuccin-cursors-mocha
 cliphist
-dunst
-efibootmgr
+#dunst
+#efibootmgr
+everforest-gtk-theme-git
+everforest-icon-theme-git
 fastfetch
 fzf
-grim
+git
+#grim
 grub
+gruvbox-gtk-theme-git
+gruvbox-icon-theme-git
 gtk3
 gtk4
 gvfs
@@ -50,6 +56,9 @@ hypridle
 hyprland
 hyprlock
 hyprpaper
+hyprpicker
+hyprsunset
+hyprshade
 imagemagick
 kitty
 lf
@@ -57,31 +66,35 @@ libnotify
 librewolf-bin
 lvm2
 man-db
+mpv
 neovim
 network-manager-applet
 networkmanager
-nodejs
-npm
+#nodejs
+#npm
 nwg-look
-papirus-folders-catppuccin-git
-pavucontrol
-pipewire-alsa
-pipewire-pulse
-pipewire-zeroconf
+#papirus-folders-catppuccin-git
+#pavucontrol
+#pipewire-alsa
+#pipewire-pulse
+#pipewire-zeroconf
 polkit-gnome
 ripgrep
 rofi-wayland
-rose-pine-gtk-theme
-slurp
+#rose-pine-gtk-theme
+#slurp
+swaync
+swayosd-git
 thunar
 thunar-volman
-tmux
+#tmux
 ttf-nerd-fonts-symbols
-ufw
+#ufw
 unzip
 waybar
-zathura
-zathura-pdf-poppler
+yazi
+#zathura
+#zathura-pdf-poppler
 zsh
 )
 
