@@ -50,6 +50,7 @@ tooltip {
 
 #workspaces button:hover {
   color: @base;
+  background-color: @color5;
   border-radius: 0;
 }
 

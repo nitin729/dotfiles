@@ -16,7 +16,7 @@
   "modules": [
     {
       "type": "custom",
-      "format": "         rude@legion5          "
+      "format": "          rude@arch          "
     },
     {
       "type": "custom",
@@ -54,6 +54,11 @@
       "key": "  ",
       "keyColor": "yellow"
     },
+    {
+      "type": "uptime",
+      "key": "  󱑀",
+      "keyColor": "blue"
+        },
     "break",
     {
       "type": "custom",
