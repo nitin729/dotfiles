@@ -3,6 +3,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export READER="zathura"
 export VIDEO="mpv"
+export TERMINAL="kitty"
 
 
 #export nvm
@@ -13,7 +14,7 @@ export NVM_DIR="$HOME/.nvm"
 
 #Export BAT
 export BAT_CONFIG_PATH="$HOME/.config/bat"
-export BAT_THEME="$HOME/.config/bat/themes/Catppuccin-mocha.tmTheme"
+export BAT_THEME="$HOME/.config/bat/themes/everforest/everforest.tmTheme"
 
 
 # lf icons

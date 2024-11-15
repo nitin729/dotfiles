@@ -1,6 +1,9 @@
 .local/share/*
+!.local/share/fonts/
+!.local/share/applications/
 .local/state/*
-!./local/share/fonts/
+
+!.local/bin/*
 
 .config/dconf/*
 .config/QtProject.conf
