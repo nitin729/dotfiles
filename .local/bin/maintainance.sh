@@ -45,7 +45,7 @@ sysupdate () {
   clear
   pacman -Syu
   clear
-  yay -Syu
+  paru -Syu
   clear
   printf "\nFull system upgrade finished"
   sleep 2

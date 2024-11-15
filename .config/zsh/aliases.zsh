@@ -45,6 +45,7 @@ alias spsii='sudo pacman -Sii'
 alias pacreset='sudo rm /var/lib/pacman/db.lck'
 
 # paru as aur helper - updates everything
+alias yay="paru"
 alias upall="paru -Syu"
 ########################################################
 

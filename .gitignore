@@ -1,0 +1,11 @@
+.local/share/*
+.local/state/*
+!./local/share/fonts/
+
+.config/dconf/*
+.config/QtProject.conf
+.config/qt6ct/*
+.config/pulse/*
+.config/xfce4/*
+.config/xsettingsd/*
+
