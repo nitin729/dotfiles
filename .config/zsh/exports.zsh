@@ -14,7 +14,7 @@ export NVM_DIR="$HOME/.nvm"
 
 #Export BAT
 export BAT_CONFIG_PATH="$HOME/.config/bat"
-export BAT_THEME="$HOME/.config/bat/themes/everforest/everforest.tmTheme"
+export BAT_THEME="everforest"
 
 
 # lf icons

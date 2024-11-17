@@ -36,7 +36,6 @@ blueman
 #bluez-utils
 brightnessctl
 btop
-#catppuccin-cursors-mocha
 cliphist
 #dunst
 #everforest-gtk-theme-git
@@ -79,6 +78,7 @@ nwg-look
 #polkit-gnome
 ripgrep
 rofi-wayland
+rose-pine-cursor
 #rose-pine-gtk-theme
 #slurp
 swaync

@@ -2,8 +2,8 @@
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
-alias cat='bat --theme=$HOME/.config/bat/themes/everforest/everforest.tmTheme --style='numbers,changes,grid,auto,header,header-filename,header-filesize,snip''
-alias bat='bat --theme=ansi --style='numbers,changes,grid,auto,header,header-filename,header-filesize,snip''
+alias cat='bat --theme=everforest --style='numbers,changes,grid,auto,header,header-filename,header-filesize,snip''
+alias bat='bat --theme=everforest --style='numbers,changes,grid,auto,header,header-filename,header-filesize,snip''
 #dev
 alias vs='vscodium'
 
