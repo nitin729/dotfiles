@@ -27,3 +27,4 @@ _darcs
 
 \misc
 ^/.xinitrc
+^/stow-local-ignore

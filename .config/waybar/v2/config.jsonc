@@ -5,10 +5,10 @@
 {
   "layer": "top",
   "position": "top",
- // "height": 15,
-//  "margin-right": 4,
-//  "margin-left": 4,
-//  "margin-top": 4,
+  "height": 15,
+  "margin-right": 4,
+  "margin-left": 4,
+  "margin-top": 4,
   "reload_style_on_change": true,
   "modules-left": [
     "hyprland/workspaces",
@@ -22,18 +22,15 @@
   "modules-center": [
   ],
   "modules-right": [
-    "custom/open-bracket",
     "tray",
-    "custom/close-bracket",
     "temperature",
-    //"group/expand",
 //    "memory",
-     "pulseaudio",
+    "pulseaudio",
     "pulseaudio#microphone",
     "battery",
-    "clock"
+    "clock",
 //   "custom/updates",
-    //"custom/swaync",
+    "custom/swaync",
   ],
   "hyprland/window": {
     "format": "{}",
@@ -52,19 +49,9 @@
 		"on-click": "activate",
     "icon":[" ", " ", " ", " ", " ", "󰻧 ", " ", "󰎇", " "],
     "persistent-workspaces": {
-      "*":  5,
+      "*":  9,
     }
   },
-    "custom/open-bracket": {
-        "format": "[",
-        // "exec": "whoami",
-        "tooltip": false,
-    },
-    "custom/close-bracket": {
-        "format": "]",
-        // "exec": "whoami",
-        "tooltip": false,
-    },
   "tray": {
     "icon-size": 15,
     "spacing": 8
@@ -75,7 +62,7 @@
     "thermal-zone": 1,
     "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
 		"interval": 5,
-		"format": "[ {icon} {temperatureC}° ]",
+		"format": "{icon} {temperatureC}°",
 		"format-icons": [
 			"",
 			"",
@@ -87,7 +74,7 @@
 	},
   "clock": {
     // "interval": 60,
-        "format": "[  {:%H:%M} ]",
+        "format": " {:%H:%M}",
         "format-alt": " {:%A,%B %d,%Y(%R)}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -119,9 +106,9 @@
       "warning": 30,
       "critical": 20
     },
-    "format": "[ {icon} {capacity}% ]",
-    "format-charging": "[  {capacity}% ]",
-    "format-plugged": "[  {capacity}% ]",
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
     "format-icons": [
       "",
       "",
@@ -137,7 +124,7 @@
     ]
   },
   "pulseaudio": {
-    "format": "[ {icon} {volume}% ]",
+    "format": "{icon} {volume}%",
     "tooltip": false,
     "format-muted": " Muted",
     "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
@@ -159,7 +146,7 @@
     }
   },
   "pulseaudio#microphone": {
-    "format": "[ {format_source} ]",
+    "format": "{format_source}",
     "format-source": " {volume}%",
     "format-source-muted": " Muted",
     "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
@@ -181,24 +168,6 @@
     "tooltip-format-enumerate-connected": "{device_alias}",
     "on-click": "btblock",
   },
-    "custom/expand": {
-        "format": "",
-        // "exec": "whoami",
-        "tooltip": false,
-    },
-    "group/expand": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 300
-        },
-        "modules": [
-            "custom/expand",
-            "pulseaudio",
-            "pulseaudio#microphone",
-            "temperature",
-            "battery"
-        ]
-    },
   "memory": {
     "interval": 2,
     "format": " {used}G",

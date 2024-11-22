@@ -2,14 +2,14 @@
 * {
   border: none;
   font-family: "CaskaydiaCove Nerd Font";
-  /* font-weight: bold; */
-  font-size: 14px;/*17px*/
+  font-weight: normal;
+  font-size: 17px;
   min-height: 0;
 }
 
 window#waybar {
   background: @base;
- /* border: 1px solid @color5;*/
+  border: 1px solid @color5;
 }
 
 tooltip {
@@ -23,7 +23,6 @@ tooltip {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-
 
 #workspaces button {
   color: @color3;
@@ -55,9 +54,8 @@ tooltip {
   border-radius: 0;
 }
 
-
-
 #window,
+#clock,
 #battery,
 #pulseaudio,
 #pulseaudio.microphone,
@@ -75,46 +73,29 @@ tooltip {
 #backlight,
 #backlight {
   opacity: 1;
-  margin-right: 4px;
-  margin-left: 4px;
+  margin-right: 8px;
+  margin-left: 8px;
   color: #ebdbb2;
 }
-
-#clock{
-  opacity: 1;
-  margin-right: 0px;
-  margin-left: 4px;
-  color: #ebdbb2;
-}
-
-#custom-open-bracket{
-  opacity: 1;
-  margin-right: 4px;
-  margin-left: 4px;
-  color: #ebdbb2;
-}
-#custom-close-bracket{
-  opacity: 1;
-  margin-right: 4px;
-  margin-left: 4px;
-  color: #ebdbb2;
-}
-
 
 #custom-swaync{
   margin-right: 20px;
 }
 
-
-
+#tray {
+  background: transparent;
+  padding-right: 9px;
+}
 
 #temperature.critical {
   color: #d20f39;
 }
 
+#window {
+  border-radius: 5px;
+}
 
 #clock {
-  /* margin-right: 10px; */
 }
 
 #network {

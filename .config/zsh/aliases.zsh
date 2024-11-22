@@ -8,7 +8,10 @@ alias bat='bat --theme=everforest --style='numbers,changes,grid,auto,header,head
 alias vs='vscodium'
 
 #list
-alias ls='ls -lah --color=auto'
+#alias ls='ls -alh --color=auto'
+alias ls='eza --icons -l'
+alias la='eza --icons -lah'
+alias lt='eza --icons -T -lah'
 
 #ssh
 

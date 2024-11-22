@@ -20,6 +20,7 @@
   // ],
   "fixed-center": true,
   "modules-center": [
+    "clock"
   ],
   "modules-right": [
     "custom/open-bracket",
@@ -30,8 +31,7 @@
 //    "memory",
      "pulseaudio",
     "pulseaudio#microphone",
-    "battery",
-    "clock"
+    "battery"
 //   "custom/updates",
     //"custom/swaync",
   ],
@@ -87,8 +87,8 @@
 	},
   "clock": {
     // "interval": 60,
-        "format": "[  {:%H:%M} ]",
-        "format-alt": " {:%A,%B %d,%Y(%R)}",
+      //  "format": "[  {:%H:%M} ]",
+        "format": "[  {:%A,%B %d,%Y } ] [ { {:%H:%M} ]}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "year",
