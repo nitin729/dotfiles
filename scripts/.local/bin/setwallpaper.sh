@@ -6,7 +6,7 @@
 WALLPAPER_LOCATION=~/.config/wallpapers/wallpaper.png
 
 # Directory containing wallpapers (you can specify your directory here)
-WALLPAPER_DIR=~/Pictures/Wallpapers
+WALLPAPER_DIR=~/.config/wallpapers/
 
 # Function to check if the file is an image
 is_image() {

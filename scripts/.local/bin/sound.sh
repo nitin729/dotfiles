@@ -40,7 +40,6 @@ function_pulseaudio() {
 	gst-plugins-base
 	gst-plugins-ugly
 	playerctl
-	volumeicon
 	)
 
 	count=0
@@ -77,7 +76,6 @@ function_pipewire() {
 	gst-plugins-bad
 	gst-plugins-base
 	gst-plugins-ugly   
-	volumeicon
 	playerctl
 	)
 
