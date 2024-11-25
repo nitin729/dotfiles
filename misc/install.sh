@@ -7,7 +7,7 @@ if pacman -Qi paru &> /dev/null; then
   	tput setaf 1;echo "###### Paru is already installed"
 else
     tput setaf 2;echo "###### Installing paru "
-    cd ~
+    cd
     sudo pacman -S --needed base-devel
     git clone https://aur.archlinux.org/paru.git
     cd paru
@@ -29,17 +29,15 @@ func_install() {
 
 
 list=(
-amd-ucode
+#amd-ucode
 bat
-blueman
-#bluez
-#bluez-utils
 brightnessctl
 btop
 cliphist
 #dunst
 #everforest-gtk-theme-git
 everforest-icon-theme-git
+eza
 fastfetch
 fzf
 #git
@@ -64,7 +62,7 @@ libnotify
 librewolf-bin
 #man-db
 mpv
-#neovim
+neovim
 network-manager-applet
 #networkmanager
 #nodejs
@@ -81,18 +79,20 @@ rofi-wayland
 rose-pine-cursor
 #rose-pine-gtk-theme
 #slurp
+starship
 swaync
 swayosd-git
 thunar
 thunar-volman
-#tmux
+tmux
 ttf-nerd-fonts-symbols
-#ufw
+ufw
 unzip
 waybar
 yazi
 zathura
 zathura-pdf-poppler
+zoxide
 zsh
 )
 
