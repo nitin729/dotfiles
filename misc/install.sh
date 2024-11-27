@@ -80,6 +80,7 @@ rose-pine-cursor
 #rose-pine-gtk-theme
 #slurp
 starship
+stow
 swaync
 swayosd-git
 thunar

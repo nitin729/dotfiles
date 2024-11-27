@@ -13,6 +13,8 @@ alias ls='eza --icons -l'
 alias la='eza --icons -lah'
 alias lt='eza --icons -T -lah'
 
+# ---- Zoxide (better cd) ----
+alias cd="z"
 #ssh
 
 # git
@@ -24,7 +26,7 @@ alias gp="git pull"
 alias gP="git push"
 
 #custom configs
-alias vim='nvim'
+#alias vim='nvim'
 alias cfg="cd ~/.config/"
 alias qtconfig="nvim ~/.config/qtile/config.py || nvim ~/dotfiles/qtile/config.py"
 alias qtcolors="nvim ~/.config/qtile/colors.py"
