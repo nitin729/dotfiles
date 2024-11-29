@@ -1,8 +1,13 @@
-# plugins
-#plug "zsh-users/zsh-autosuggestions"
 #plug "zap-zsh/supercharge"
-#plug "zsh-users/zsh-syntax-highlighting"
 
+# sources
+[ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
+[ -f "$HOME/.config/zsh/exports.zsh" ] && source "$HOME/.config/zsh/exports.zsh"
+[ -f "$HOME/.config/zsh/functions.zsh" ] && source "$HOME/.config/zsh/functions.zsh"
+
+# plugins
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 # history setup
 HISTFILE=$HOME/.zhistory
@@ -17,16 +22,18 @@ setopt hist_verify
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
-[ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
-[ -f "$HOME/.config/zsh/exports.zsh" ] && source "$HOME/.config/zsh/exports.zsh"
-[ -f "$HOME/.config/zsh/functions.zsh" ] && source "$HOME/.config/zsh/functions.zsh"
 
-#Starship
+# Starship
 eval "$(starship init zsh)"
 
-#Zoxide
+# Zoxide
 eval "$(zoxide init zsh)"
+
 # Load and initialise completion system
 autoload -Uz compinit
+setopt PROMPT_SUBST
 compinit
+zstyle ':completion:*' menu select
 
+
+#. "$HOME/.local/bin/env"

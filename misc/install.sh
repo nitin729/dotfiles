@@ -65,8 +65,8 @@ mpv
 neovim
 network-manager-applet
 #networkmanager
-#nodejs
-#npm
+nodejs
+npm
 nwg-look
 #papirus-folders-catppuccin-git
 #pavucontrol
@@ -95,6 +95,8 @@ zathura
 zathura-pdf-poppler
 zoxide
 zsh
+zsh-syntax-highlighting
+zsh-autosuggestions
 )
 
 count=0

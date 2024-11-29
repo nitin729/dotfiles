@@ -12,7 +12,9 @@
   "reload_style_on_change": true,
   "modules-left": [
     "hyprland/workspaces",
+    "custom/open-bracket",
     "hyprland/window",
+    "custom/close-bracket",
   ],
     // "backlight",
     // "bluetooth",
