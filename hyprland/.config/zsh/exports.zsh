@@ -5,6 +5,8 @@ export READER="zathura"
 export VIDEO="mpv"
 export TERMINAL="kitty"
 
+# Doom Emacs path
+export PATH="$HOME/.config/emacs/bin:$PATH"
 
 #export nvm
 # export NVM_DIR="$HOME/.nvm"

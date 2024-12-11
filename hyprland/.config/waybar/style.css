@@ -9,6 +9,7 @@
 
 window#waybar {
   background: @base;
+  opacity: 0.8;
  /* border: 1px solid @color5;*/
 }
 
@@ -62,6 +63,7 @@ tooltip {
 #pulseaudio,
 #pulseaudio.microphone,
 #network,
+#idle_inhibitor,
 #bluetooth,
 #custom-notifications,
 #custom-swaync,
@@ -79,7 +81,9 @@ tooltip {
   margin-left: 4px;
   color: #ebdbb2;
 }
-
+#idle_inhibitor {
+  color: red;
+}
 #clock{
   opacity: 1;
   margin-right: 0px;

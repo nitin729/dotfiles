@@ -13,8 +13,6 @@ alias ls='eza --icons -l'
 alias la='eza --icons -lah'
 alias lt='eza --icons -T -lah'
 
-# ---- Zoxide (better cd) ----
-alias cd="z"
 #ssh
 
 # git
@@ -59,5 +57,9 @@ alias sz='source ~/.zshrc'
 alias zo='nvim ~/.zshrc'
 alias za='nvim ~/.config/zsh/aliases.zsh'
 alias zp='nvim ~/.config/zsh/prompt.zsh'
+
+#cd
+alias hd="cd ~/dotfiles/hyprland/"
+
 # exit
 alias :q="exit"

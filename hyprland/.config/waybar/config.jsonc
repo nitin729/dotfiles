@@ -27,6 +27,7 @@
     "custom/open-bracket",
     "tray",
     "custom/close-bracket",
+   // "idle_inhibitor",
     "temperature",
     //"group/expand",
 //    "memory",
@@ -253,6 +254,13 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
+},
+   "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "",
+        "deactivated": ""
+    }
 }
  /* "custom/swaync": {
     "tooltip": false,

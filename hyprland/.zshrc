@@ -1,5 +1,3 @@
-#plug "zap-zsh/supercharge"
-
 # sources
 [ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
 [ -f "$HOME/.config/zsh/exports.zsh" ] && source "$HOME/.config/zsh/exports.zsh"
@@ -22,6 +20,8 @@ setopt hist_verify
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
+# Zellij
+#echo 'eval "$(zellij setup --generate-auto-start zsh)"' >> ~/.zshrc
 
 # Starship
 eval "$(starship init zsh)"
@@ -36,4 +36,4 @@ compinit
 zstyle ':completion:*' menu select
 
 
-#. "$HOME/.local/bin/env"
+. "$HOME/.local/bin/env"

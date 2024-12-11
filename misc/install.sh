@@ -56,6 +56,7 @@ hyprpaper
 hyprpicker
 hyprsunset
 imagemagick
+imv
 kitty
 lf
 libnotify
