@@ -5,8 +5,10 @@ export READER="zathura"
 export VIDEO="mpv"
 export TERMINAL="kitty"
 
+#export XDG_CURRENT_DESKTOP=hyprland
+
 # Doom Emacs path
-export PATH="$HOME/.config/emacs/bin:$PATH"
+#export PATH="$HOME/.config/emacs/bin:$PATH"
 
 #export nvm
 # export NVM_DIR="$HOME/.nvm"

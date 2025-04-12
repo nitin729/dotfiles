@@ -1,0 +1,151 @@
+@import "./mocha.css";
+* {
+  border: none;
+  font-family: "CaskaydiaCove Nerd Font";
+  font-weight: normal;
+  font-size: 17px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: @base;
+  border: 2px solid #f4b8e4;
+}
+
+tooltip {
+  background: #000000;
+  border-radius: 7px;
+  border-width: 2.5px;
+  border-style: solid;
+  border-color: #8aadf4;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#workspaces button {
+  color: @blue;
+}
+
+#workspaces button.empty {
+  color: @text;
+}
+
+#workspaces button.active {
+  color: #f4b8e4;
+  background-color: rgba(180, 190, 254, 0.7);
+  border-radius: 0;
+}
+
+#workspaces button.focused {
+  color: #a6adc8;
+}
+
+#workspaces button.urgent {
+  color: red;
+  background: #a6e3a1;
+}
+
+#workspaces button:hover {
+  color: @text;
+}
+
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#pulseaudio.microphone,
+#network,
+#bluetooth,
+#custom-notifications,
+#custom-updates,
+#custom-player,
+#temperature,
+#workspaces,
+#tray,
+#memory,
+#disk,
+#backlight,
+#backlight {
+  opacity: 1;
+  margin-right: 8px;
+  margin-left: 8px;
+  color: @text;
+}
+
+#tray {
+  background: transparent;
+  padding-right: 9px;
+}
+
+#temperature.critical {
+  color: #d20f39;
+}
+
+#window {
+  border-radius: 5px;
+}
+
+#clock {
+}
+
+#network {
+}
+
+#custom-notifications {
+  color: #f9e2af;
+  border-radius: 7px 7px 7px 7px;
+  padding-left: 9px;
+  padding-right: 15px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+#custom-updates {
+  border-radius: 7px 7px 7px 7px;
+  border-left: 0px;
+  border-right: 0px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+#custom-player {
+}
+
+#memory {
+}
+
+#disk {
+}
+
+#bluetooth {
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.microphone {
+}
+
+#battery {
+}
+
+#battery.critical:not(.charging) {
+  color: #d20f39;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.charging {
+  background-color: transparent;
+  color: #40a02b;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}

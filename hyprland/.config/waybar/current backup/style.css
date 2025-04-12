@@ -1,0 +1,182 @@
+@import "./colorschemes/everforest.css";
+* {
+  border: none;
+  font-family: "CaskaydiaCove Nerd Font";
+  /* font-weight: bold; */
+  font-size: 14px;/*17px*/
+  min-height: 0;
+}
+
+window#waybar {
+  background: @base;
+  opacity: 0.8;
+ /* border: 1px solid @color5;*/
+}
+
+tooltip {
+  background: @base;
+  border-radius: 7px;
+  border-width: 2.5px;
+  border-style: solid;
+  border-color: @color5;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
+#workspaces button {
+  color: @color3;
+}
+
+#workspaces button.empty {
+  color: @color2;
+}
+
+#workspaces button.active {
+  color: @base;
+  background-color: @color5;
+  font-weight: 900;
+  border-radius: 0;
+}
+
+#workspaces button.focused {
+  color: #a6adc8;
+}
+
+#workspaces button.urgent {
+  color: red;
+  background: #a6e3a1;
+}
+
+#workspaces button:hover {
+  color: @base;
+  background-color: @color5;
+  border-radius: 0;
+}
+
+
+
+#window,
+#battery,
+#pulseaudio,
+#pulseaudio.microphone,
+#network,
+#idle_inhibitor,
+#bluetooth,
+#custom-notifications,
+#custom-swaync,
+#custom-updates,
+#custom-player,
+#temperature,
+#workspaces,
+#tray,
+#memory,
+#disk,
+#backlight,
+#backlight {
+  opacity: 1;
+  margin-right: 4px;
+  margin-left: 4px;
+  color: #ebdbb2;
+}
+#idle_inhibitor {
+  color: red;
+}
+#clock{
+  opacity: 1;
+  margin-right: 0px;
+  margin-left: 4px;
+  color: #ebdbb2;
+}
+
+#custom-open-bracket{
+  opacity: 1;
+  margin-right: 4px;
+  margin-left: 4px;
+  color: #ebdbb2;
+}
+#custom-close-bracket{
+  opacity: 1;
+  margin-right: 4px;
+  margin-left: 4px;
+  color: #ebdbb2;
+}
+
+
+#custom-swaync{
+  margin-right: 20px;
+}
+
+
+
+
+#temperature.critical {
+  color: #d20f39;
+}
+
+
+#clock {
+  /* margin-right: 10px; */
+}
+
+#network {
+}
+
+#custom-notifications {
+  color: #f9e2af;
+  border-radius: 7px 7px 7px 7px;
+  padding-left: 9px;
+  padding-right: 15px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+#custom-updates {
+  border-radius: 7px 7px 7px 7px;
+  border-left: 0px;
+  border-right: 0px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+#custom-player {
+}
+
+#memory {
+}
+
+#disk {
+}
+
+#bluetooth {
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.microphone {
+}
+
+#battery {
+}
+
+#battery.critical:not(.charging) {
+  color: #d20f39;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.charging {
+  background-color: transparent;
+  color: #40a02b;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}

@@ -29,7 +29,7 @@ alias cfg="cd ~/.config/"
 alias qtconfig="nvim ~/.config/qtile/config.py || nvim ~/dotfiles/qtile/config.py"
 alias qtcolors="nvim ~/.config/qtile/colors.py"
 alias nvconfig="cd ~/.config/nvim; nvim"
-alias hc="nvim ~/.config/hypr/hyprland.conf"
+alias hc="nvim ~/.config/hypr/"
 alias wbc="nvim ~/.config/waybar/config.jsonc"
 alias wbs="nvim ~/.config/waybar/style.css"
 
@@ -60,6 +60,7 @@ alias zp='nvim ~/.config/zsh/prompt.zsh'
 
 #cd
 alias hd="cd ~/dotfiles/hyprland/"
+alias cd="z"
 
 # exit
 alias :q="exit"

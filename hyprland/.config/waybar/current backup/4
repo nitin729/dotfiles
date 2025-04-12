@@ -12,9 +12,7 @@
   "reload_style_on_change": true,
   "modules-left": [
     "hyprland/workspaces",
-    "custom/open-bracket",
     "hyprland/window",
-    "custom/close-bracket",
   ],
     // "backlight",
     // "bluetooth",
@@ -22,19 +20,18 @@
   // ],
   "fixed-center": true,
   "modules-center": [
+    "clock"
   ],
   "modules-right": [
     "custom/open-bracket",
     "tray",
     "custom/close-bracket",
-   // "idle_inhibitor",
     "temperature",
     //"group/expand",
 //    "memory",
      "pulseaudio",
     "pulseaudio#microphone",
-    "battery",
-    "clock"
+    "battery"
 //   "custom/updates",
     //"custom/swaync",
   ],
@@ -52,26 +49,11 @@
     "sort-by-name": true,
     "format": "{icon}",
     "show-special": true,
-		"on-click": "activate","format-icons": {
-      "1": " ",
-      "2": " ",
-      "3": " ",
-      "4": " ",
-      "5": "󰎇",
-    },
+		"on-click": "activate",
+    "icon":[" ", " ", " ", " ", " ", "󰻧 ", " ", "󰎇", " "],
     "persistent-workspaces": {
-      "*": [
-        1,
-        2,
-        3,
-        4,
-        5,
-      ],
+      "*":  5,
     }
-    // "format-icons":[" ", " ", " ", " ", " ", "󰻧 ", " ", "󰎇", " "],
-    // "persistent-workspaces": {
-    //   "*":  5,
-    // }
   },
     "custom/open-bracket": {
         "format": "[",
@@ -105,9 +87,8 @@
 	},
   "clock": {
     // "interval": 60,
-       // "format": "[  {:%H:%M} ]",
-        //"format": "[  {:%A,%B %d,%Y(%R)} ]",
-        "format": "[  {:%a,%b %d %H:%M} ]",
+      //  "format": "[  {:%H:%M} ]",
+        "format": "[  {:%A,%B %d,%Y } ] [ { {:%H:%M} ]}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "year",
@@ -204,11 +185,6 @@
         "format": "",
         // "exec": "whoami",
         "tooltip": false,
-    },"
-  custom/equal": {
-        "format": "==",
-        // "exec": "whoami",
-        "tooltip": false,
     },
     "group/expand": {
         "orientation": "horizontal",
@@ -275,13 +251,6 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
-},
-   "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-        "activated": "",
-        "deactivated": ""
-    }
 }
  /* "custom/swaync": {
     "tooltip": false,
